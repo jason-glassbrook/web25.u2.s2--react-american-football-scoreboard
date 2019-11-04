@@ -38,6 +38,17 @@ function App() {
   // [teams[homeTeam].score , teams[homeTeam].setScore] = useState (initScore);
   // [teams[awayTeam].score , teams[awayTeam].setScore] = useState (initScore);
 
+  /***********************************************************
+    EVENTS
+  ***********************************************************/
+  const points = {
+    "touchdown" : 7,
+    "field_goal" : 3,
+  };
+
+  /***********************************************************
+    COMPONENT
+  ***********************************************************/
   return (
     <div className="container">
       <section className="scoreboard">

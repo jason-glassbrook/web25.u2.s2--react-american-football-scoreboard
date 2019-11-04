@@ -46,6 +46,31 @@ function App() {
     "fieldGoal" : 3,
   };
 
+  const updateScore = (teamRole , scoreType) => {
+    let message = "";
+    let setter = () => {};
+    ///
+    switch (teamRole) {
+      case "home":
+        message = "--- 📣 --- home team scores --- 📣 ---";
+        setter = setHomeScore;
+        break;
+      case "away":
+        message = "--- 📣 --- away team scores --- 📣 ---";
+        setter = setAwayScore;
+        break;
+      default:
+        message = "--- 😨 --- uh-oh --- 😨 ---";
+    }
+    ///
+    return (
+      () => {
+        console.log (message);
+        setter ((score) => (score + points[scoreType]))
+      }
+    );
+  };
+
   /***********************************************************
     COMPONENT
   ***********************************************************/
@@ -71,12 +96,12 @@ function App() {
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
-          <button className="homeButtons__touchdown" onClick={() => setHomeScore ((score) => (score + points.touchdown))}>Home Touchdown</button>
-          <button className="homeButtons__fieldGoal" onClick={() => setHomeScore ((score) => (score + points.fieldGoal))}>Home Field Goal</button>
+          <button className="homeButtons__touchdown" onClick={updateScore ("home" , "touchdown")}>Home Touchdown</button>
+          <button className="homeButtons__fieldGoal" onClick={updateScore ("home" , "fieldGoal")}>Home Field Goal</button>
         </div>
         <div className="awayButtons">
-          <button className="awayButtons__touchdown" onClick={() => setAwayScore ((score) => (score + points.touchdown))}>Away Touchdown</button>
-          <button className="awayButtons__fieldGoal" onClick={() => setAwayScore ((score) => (score + points.fieldGoal))}>Away Field Goal</button>
+          <button className="awayButtons__touchdown" onClick={updateScore ("away" , "touchdown")}>Away Touchdown</button>
+          <button className="awayButtons__fieldGoal" onClick={updateScore ("away" , "fieldGoal")}>Away Field Goal</button>
         </div>
       </section>
     </div>

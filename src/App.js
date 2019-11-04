@@ -1,10 +1,40 @@
 //TODO: STEP 1 - Import the useState hook.
-import React from "react";
+import React , {useState} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
 function App() {
+  /***********************************************************
+    STATE
+  ***********************************************************/
+  const initScore = 0;
+  
+  /// apparently I can't do this... ///
+  // const teams = [
+  //   {
+  //     "name"     : "Lions",
+  //     "role"     : "home",
+  //     "score"    : 0,
+  //     "setScore" : () => {},
+  //   },
+  //   {
+  //     "name"     : "Tigers",
+  //     "role"     : "away",
+  //     "score"    : 0,
+  //     "setScore" : () => {},
+  //   }
+  // ];
+  // const homeTeam = teams.indexOf ((team) => (team.role === "home"));
+  // const awayTeam = teams.indexOf ((team) => (team.role === "away"));
+  
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
+
+  const [homeScore , setHomeScore] = useState (initScore);
+  const [awayScore , setAwayScore] = useState (initScore);
+
+  /// apparently I can't do this... ///
+  // [teams[homeTeam].score , teams[homeTeam].setScore] = useState (initScore);
+  // [teams[awayTeam].score , teams[awayTeam].setScore] = useState (initScore);
 
   return (
     <div className="container">
